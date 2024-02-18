@@ -1,0 +1,51 @@
+{
+  "applications": "*",
+  "changelogDate": "20240218093216",
+  "dto": "mapstruct",
+  "entityTableName": "ticker_data",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "adjClose",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "close",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "high",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "low",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "open",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "volume",
+      "fieldType": "Long"
+    }
+  ],
+  "name": "TickerData",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "symbol",
+      "otherEntityName": "ticker",
+      "relationshipName": "ticker",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

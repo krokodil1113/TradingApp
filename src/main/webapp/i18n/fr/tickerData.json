@@ -1,0 +1,31 @@
+{
+  "saIlatestApp": {
+    "tickerData": {
+      "home": {
+        "title": "TickerData",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Ticker Data",
+        "createOrEditLabel": "Créer ou éditer un Ticker Data",
+        "notFound": "Aucun Ticker Data trouvé"
+      },
+      "created": "Un nouveau Ticker Data a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Ticker Data avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Ticker Data avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Ticker Data {{ id }} ?"
+      },
+      "detail": {
+        "title": "Ticker Data"
+      },
+      "id": "ID",
+      "date": "Date",
+      "adjClose": "Adj Close",
+      "close": "Close",
+      "high": "High",
+      "low": "Low",
+      "open": "Open",
+      "volume": "Volume",
+      "ticker": "Ticker"
+    }
+  }
+}

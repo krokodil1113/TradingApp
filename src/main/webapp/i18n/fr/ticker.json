@@ -1,0 +1,35 @@
+{
+  "saIlatestApp": {
+    "ticker": {
+      "home": {
+        "title": "Tickers",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Ticker",
+        "createOrEditLabel": "Créer ou éditer un Ticker",
+        "notFound": "Aucun Ticker trouvé"
+      },
+      "created": "Un nouveau Ticker a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Ticker avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Ticker avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Ticker {{ id }} ?"
+      },
+      "detail": {
+        "title": "Ticker"
+      },
+      "id": "ID",
+      "currency": "Currency",
+      "description": "Description",
+      "displaySymbol": "Display Symbol",
+      "figi": "Figi",
+      "isin": "Isin",
+      "mic": "Mic",
+      "shareClassFIGI": "Share Class FIGI",
+      "symbol": "Symbol",
+      "symbol2": "Symbol 2",
+      "type": "Type",
+      "tickerData": "Ticker Data",
+      "user": "User"
+    }
+  }
+}

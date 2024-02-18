@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity TickerData.
+    -->
+    <changeSet id="20240218093216-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="ticker_id"
+                                 baseTableName="ticker_data"
+                                 constraintName="fk_ticker_data__ticker_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ticker"
+                                 />
+    </changeSet>
+</databaseChangeLog>

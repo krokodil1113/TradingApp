@@ -1,0 +1,69 @@
+{
+  "applications": "*",
+  "changelogDate": "20240218093116",
+  "dto": "mapstruct",
+  "entityTableName": "ticker",
+  "fields": [
+    {
+      "fieldName": "currency",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "displaySymbol",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "figi",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isin",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "mic",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "shareClassFIGI",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "symbol",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "symbol2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Ticker",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "tickerData",
+      "otherEntityRelationshipName": "ticker",
+      "relationshipName": "tickerData",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "user",
+      "relationshipName": "user",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipWithBuiltInEntity": true
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

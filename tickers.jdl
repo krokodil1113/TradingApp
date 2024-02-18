@@ -1,0 +1,34 @@
+entity Ticker {
+  currency String,
+  description String,
+  displaySymbol String,
+  figi String,
+  isin String,
+  mic String,
+  shareClassFIGI String,
+  symbol String required,
+  symbol2 String,
+  type String
+}
+
+entity TickerData {
+  date String required,
+  adjClose Double,
+  close Double,
+  high Double,
+  low Double,
+  open Double,
+  volume Long
+}
+
+relationship OneToMany {
+  Ticker to TickerData{ticker(symbol) required}
+}
+
+relationship ManyToOne {
+  Ticker{user} to User with builtInEntity
+}
+
+paginate Ticker, TickerData with pagination
+service Ticker, TickerData with serviceClass
+dto Ticker, TickerData with mapstruct

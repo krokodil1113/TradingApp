@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="tickerData">
+      <h2 data-cy="tickerDataDetailsHeading"><span jhiTranslate="saIlatestApp.tickerData.detail.title">Ticker Data</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ tickerData.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="saIlatestApp.tickerData.date">Date</span></dt>
+        <dd>
+          <span>{{ tickerData.date }}</span>
+        </dd>
+        <dt><span jhiTranslate="saIlatestApp.tickerData.adjClose">Adj Close</span></dt>
+        <dd>
+          <span>{{ tickerData.adjClose }}</span>
+        </dd>
+        <dt><span jhiTranslate="saIlatestApp.tickerData.close">Close</span></dt>
+        <dd>
+          <span>{{ tickerData.close }}</span>
+        </dd>
+        <dt><span jhiTranslate="saIlatestApp.tickerData.high">High</span></dt>
+        <dd>
+          <span>{{ tickerData.high }}</span>
+        </dd>
+        <dt><span jhiTranslate="saIlatestApp.tickerData.low">Low</span></dt>
+        <dd>
+          <span>{{ tickerData.low }}</span>
+        </dd>
+        <dt><span jhiTranslate="saIlatestApp.tickerData.open">Open</span></dt>
+        <dd>
+          <span>{{ tickerData.open }}</span>
+        </dd>
+        <dt><span jhiTranslate="saIlatestApp.tickerData.volume">Volume</span></dt>
+        <dd>
+          <span>{{ tickerData.volume }}</span>
+        </dd>
+        <dt><span jhiTranslate="saIlatestApp.tickerData.ticker">Ticker</span></dt>
+        <dd>
+          <div *ngIf="tickerData.ticker">
+            <a [routerLink]="['/ticker', tickerData.ticker.id, 'view']">{{ tickerData.ticker.symbol }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/ticker-data', tickerData.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

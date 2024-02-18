@@ -1,0 +1,98 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-ticker-data-heading"
+        data-cy="TickerDataCreateUpdateHeading"
+        jhiTranslate="saIlatestApp.tickerData.home.createOrEditLabel"
+      >
+        Create or edit a Ticker Data
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="saIlatestApp.tickerData.date" for="field_date">Date</label>
+          <input type="text" class="form-control" name="date" id="field_date" data-cy="date" formControlName="date" />
+          <div *ngIf="editForm.get('date')!.invalid && (editForm.get('date')!.dirty || editForm.get('date')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('date')?.errors?.required" jhiTranslate="entity.validation.required"
+              >This field is required.</small
+            >
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="saIlatestApp.tickerData.adjClose" for="field_adjClose">Adj Close</label>
+          <input type="number" class="form-control" name="adjClose" id="field_adjClose" data-cy="adjClose" formControlName="adjClose" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="saIlatestApp.tickerData.close" for="field_close">Close</label>
+          <input type="number" class="form-control" name="close" id="field_close" data-cy="close" formControlName="close" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="saIlatestApp.tickerData.high" for="field_high">High</label>
+          <input type="number" class="form-control" name="high" id="field_high" data-cy="high" formControlName="high" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="saIlatestApp.tickerData.low" for="field_low">Low</label>
+          <input type="number" class="form-control" name="low" id="field_low" data-cy="low" formControlName="low" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="saIlatestApp.tickerData.open" for="field_open">Open</label>
+          <input type="number" class="form-control" name="open" id="field_open" data-cy="open" formControlName="open" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="saIlatestApp.tickerData.volume" for="field_volume">Volume</label>
+          <input type="number" class="form-control" name="volume" id="field_volume" data-cy="volume" formControlName="volume" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="saIlatestApp.tickerData.ticker" for="field_ticker">Ticker</label>
+          <select
+            class="form-control"
+            id="field_ticker"
+            data-cy="ticker"
+            name="ticker"
+            formControlName="ticker"
+            [compareWith]="compareTicker"
+          >
+            <option *ngIf="editForm.get(['ticker'])!.value == null" [ngValue]="null" selected></option>
+            <option [ngValue]="tickerOption" *ngFor="let tickerOption of tickersSharedCollection">{{ tickerOption.symbol }}</option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['ticker'])!.invalid && (editForm.get(['ticker'])!.dirty || editForm.get(['ticker'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['ticker'])?.errors?.required" jhiTranslate="entity.validation.required"
+            >This field is required.</small
+          >
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

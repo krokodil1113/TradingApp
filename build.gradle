@@ -204,6 +204,7 @@ dependencies {
     implementation "org.springframework.security:spring-security-data"
     implementation "io.micrometer:micrometer-registry-prometheus"
     implementation "io.dropwizard.metrics:metrics-core"
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
     // jhipster-needle-gradle-dependency - JHipster will add additional dependencies here
 }
 

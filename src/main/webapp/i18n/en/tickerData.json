@@ -1,0 +1,31 @@
+{
+  "saIlatestApp": {
+    "tickerData": {
+      "home": {
+        "title": "Ticker Data",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Ticker Data",
+        "createOrEditLabel": "Create or edit a Ticker Data",
+        "notFound": "No Ticker Data found"
+      },
+      "created": "A new Ticker Data is created with identifier {{ param }}",
+      "updated": "A Ticker Data is updated with identifier {{ param }}",
+      "deleted": "A Ticker Data is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ticker Data {{ id }}?"
+      },
+      "detail": {
+        "title": "Ticker Data"
+      },
+      "id": "ID",
+      "date": "Date",
+      "adjClose": "Adj Close",
+      "close": "Close",
+      "high": "High",
+      "low": "Low",
+      "open": "Open",
+      "volume": "Volume",
+      "ticker": "Ticker"
+    }
+  }
+}

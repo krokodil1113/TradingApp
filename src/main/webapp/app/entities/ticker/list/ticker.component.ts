@@ -17,6 +17,10 @@ import { EntityArrayResponseType, TickerService } from '../service/ticker.servic
 import { TickerDeleteDialogComponent } from '../delete/ticker-delete-dialog.component';
 import { ITickerData } from 'app/entities/ticker-data/ticker-data.model';
 
+import { Chart, registerables } from 'chart.js';
+import 'chartjs-adapter-date-fns';
+Chart.register(...registerables);
+
 @Component({
   standalone: true,
   selector: 'jhi-ticker',
@@ -46,6 +50,8 @@ export class TickerComponent implements OnInit {
 
   modalData: ITickerData[] = [];
 
+  public chart: Chart | undefined;
+
   constructor(
     protected tickerService: TickerService,
     protected activatedRoute: ActivatedRoute,
@@ -58,8 +64,8 @@ export class TickerComponent implements OnInit {
   ngOnInit(): void {
     this.load();
   }
-
-  openModal(modalContent: any, symbol: string): void {
+  //********************SHOWING THE DATA IN THE MODAL******************** */
+  /*  openModal(modalContent: any, symbol: string): void {
     this.tickerService.fetchTickerData(symbol).subscribe(data => {
       this.modalData = Object.keys(data).map(date => ({
         date: date,
@@ -71,6 +77,66 @@ export class TickerComponent implements OnInit {
         volume: data[date]['Volume'],
       }));
       this.modalService.open(modalContent);
+    });
+  } */
+  //********************/SHOWING THE DATA IN THE MODAL******************** */
+
+  openModal(modalContent: any, symbol: string): void {
+    this.tickerService.fetchTickerData(symbol).subscribe(data => {
+      const chartData = Object.keys(data).map(date => ({
+        x: date,
+        y: data[date]['Close'],
+      }));
+
+      this.modalService.open(modalContent).result.then(
+        () => {
+          this.chart?.destroy(); // Destroy the chart if the modal is closed
+        },
+        () => {
+          this.chart?.destroy(); // Optionally handle the dismiss action
+        },
+      );
+
+      // Wait for modal to be opened and DOM to be ready
+      setTimeout(() => this.createChart(chartData), 0);
+    });
+  }
+
+  private createChart(chartData: any[]): void {
+    const ctx = document.getElementById('myChart') as HTMLCanvasElement;
+    this.chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [
+          {
+            label: 'Close Price',
+            data: chartData,
+            fill: false,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1,
+          },
+        ],
+      },
+      options: {
+        scales: {
+          x: {
+            type: 'time',
+            time: {
+              unit: 'day',
+            },
+            title: {
+              display: true,
+              text: 'Date',
+            },
+          },
+          y: {
+            title: {
+              display: true,
+              text: 'Close Price',
+            },
+          },
+        },
+      },
     });
   }
 
